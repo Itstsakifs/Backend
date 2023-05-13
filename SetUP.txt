@@ -1,0 +1,7 @@
+setup{
+    npm i
+}
+
+sequelize {
+    npm install -g sequelize-cli
+}
