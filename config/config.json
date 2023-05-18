@@ -3,6 +3,7 @@
     "username": "root",
     "password": null,
     "database": "news",
+    "database": "backend",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
