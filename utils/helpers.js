@@ -10,13 +10,12 @@ respon.responsePage = (res, code, pages,per_pages,totals,total_pages , data) => 
     });
 };
 
-respon.response = (res, code, message, data, extra) => {
-    return res.status(code).json({
-        status : code,
-        message : message,
-        data : data,
-        extra : extra,
-    });
+respon.response = (res, code, data, message) => {
+  return res.status(code).json({
+    status: code,
+    message: message || "Success",
+    data: data,
+  });
 };
 
 respon.resposeOne = (res, code, data) => {
@@ -25,11 +24,11 @@ respon.resposeOne = (res, code, data) => {
     });
 };
 
-respon.responseErr = (res, code, message, data) => {
+respon.responseErr = (res, code, error, message) => {
     return res.status(code).json({
         code: code,
         message: message || "error",
-        errors: data || "",
+        error: error,
     });
 };
 

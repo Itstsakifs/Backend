@@ -11,8 +11,8 @@ const News = sequelize.define(
       primaryKey: true,
       type: DataTypes.INTEGER,
     },
-    foto: {
-      field: "foto",
+    image: {
+      field: "image",
       allowNull: false,
       type: DataTypes.STRING,
     },

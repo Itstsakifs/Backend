@@ -16,7 +16,7 @@ module.exports = {
         primaryKey: true,
         autoIncrement: true,
       },
-      foto: {
+      image: {
         allowNull: false,
         type: Sequelize.STRING,
       },
