@@ -5,8 +5,10 @@ setup{
 url {
     http://localhost:3000
 
-    berita :
-    http://localhost:3000/v1/news
+    berita crud : http://localhost:3000/news  
+    user crud : http://localhost:3000/user
+    login : http://localhost:3000/login
+    user auth : http://localhost:3000/protek
 }
 
 
