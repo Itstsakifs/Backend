@@ -38,7 +38,8 @@ app.get('/authuser', (req, res) => {//get user ter-autentifikasi
     const user = req.user;
     res.json({ message: 'Protected route', user, tets: "kamu keren" });
 });
-app.use('/v1', newsRoute);//routes berita
+//app.use('/v1', newsRoute);//routes berita
+app.use(newsRoute);//routes berita
 
 app.listen(port, ()=>{
     console.log(`server jalan http://localhost:${port}`)
