@@ -1,40 +1,44 @@
+//import modul
 const express = require('express');
 const BP = require('body-parser');
 const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
-const newsRoute = require('./routes/newsRoute');
 const fileUpload = require("express-fileupload");
 const middleware = require('./middleware/auth');
 
+//import route
+const newsRoute = require("./routes/newsRoute");
 
-const app = express()
+//inisial
+const app = express();
 const port = 3000;
 
-
-app.use(helmet());
-require("dotenv").config();
-app.use(express.static("public"));
-app.use(fileUpload());
-app.use(bodyParser.json());
+//project setting
+app.use(helmet());//keamanan aplikasi
+require("dotenv").config();//konfigurasi
+app.use(express.static("public"));//akses folder public
+app.use(fileUpload());//gunakan modul file-upload bawaan express
+app.use(bodyParser.json());//dep
 app.use(BP.urlencoded({extended: true}));
-app.use(logger('dev'));
+app.use(logger('dev'));//dep
 
+//tipu daya backend
 app.get('/', (req,res) => {
-    res.send('hlo world')
+    res.redirect("https://mercusuar.uzone.id/");
 });
 
-app.use('/api', newsRoute);
-app.use(require('./routes/user'));
+//unprotected routes
+app.use(require('./routes/user'));//crud users
+app.use(require('./routes/authRoute'))
 
-// midellware
-app.use(middleware.verifyToken);
-
-app.get('/protek', (req, res) => {
-    // Dapatkan informasi pengguna dari req.user
+//proteted routes
+app.use(middleware.verifyToken);// midellware
+app.get('/authuser', (req, res) => {//get user ter-autentifikasi
     const user = req.user;
     res.json({ message: 'Protected route', user, tets: "kamu keren" });
 });
+app.use('/v1', newsRoute);//routes berita
 
 app.listen(port, ()=>{
     console.log(`server jalan http://localhost:${port}`)
