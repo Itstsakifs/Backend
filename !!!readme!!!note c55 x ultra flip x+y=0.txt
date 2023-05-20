@@ -2,6 +2,14 @@ setup{
     npm i
 }
 
+url {
+    http://localhost:3000
+
+    berita :
+    http://localhost:3000/v1/news
+}
+
+
 sequelize? {
     npm install -g sequelize-cli
 }
