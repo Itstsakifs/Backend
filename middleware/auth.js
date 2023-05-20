@@ -5,7 +5,7 @@ mid = {};
 mid.verifyToken = (req, res, next) => {
     const token = req.header('Auth');
     if (!token) {
-        return res.status(401).json({ message: 'Unauth' });
+        return res.status(401).json({ message: 'Unauthorized' });
     }
 
     try {

@@ -2,7 +2,6 @@ const express = require('express');
 const app = express.Router();
 const userController = require('../controller/user');
 
-
 //crud user
 app.get('/user', userController.getAll);
 app.get('/user/:id', userController.getID);

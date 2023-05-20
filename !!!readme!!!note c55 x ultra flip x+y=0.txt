@@ -2,8 +2,19 @@ setup{
     npm i
 }
 
-sequelize {
+sequelize? {
     npm install -g sequelize-cli
+}
+
+migration {
+    sequelize db:migrate
+
+    undo
+    sequelize db:migrate:undo:all
+}
+
+seeder {
+    belum bikin seeder
 }
 
 cli command add file {
