@@ -1,9 +1,11 @@
 const jwt = require('jsonwebtoken');
 
-const verifyToken = (req, res, next) => {
-    const token = req.header('Authorization');
+mid = {};
+
+mid.verifyToken = (req, res, next) => {
+    const token = req.header('Auth');
     if (!token) {
-    return res.status(401).json({ message: 'Token Tidak Ada' });
+    return res.status(401).json({ message: 'Unauth' });
     }
 
     try {
@@ -15,4 +17,5 @@ const verifyToken = (req, res, next) => {
     }
 };
 
-module.exports = verifyToken;
+
+module.exports = mid;

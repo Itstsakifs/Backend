@@ -32,6 +32,7 @@ const user = sequilize.define('user', {
     },
     
 },{
+    tableName: "user",
     freezeTableName:true,
 });
 
