@@ -16,3 +16,11 @@ cli command add file {
 }
 
 error security = {{ Set-ExecutionPolicy RemoteSigned }}
+
+"id": 1,
+"image": "http://localhost:3000/images/WhatsApp_Image_2022-10-11_at_21.52.33.jpeg",
+"judul": "judul pertama ",
+"author": "jelang",
+"isi": "lorem ipsum sit amet dolor",
+"createdAt": "2023-05-20T13:26:04.000Z",
+"updatedAt": "2023-05-20T13:29:32.000Z"

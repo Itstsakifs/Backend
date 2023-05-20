@@ -3,14 +3,11 @@ const BP = require('body-parser');
 const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
-const newsRoute = require('./routes/newsRoute');
 const fileUpload = require("express-fileupload");
 const middleware = require('./middleware/auth');
 
-
 const app = express()
 const port = 3000;
-
 
 app.use(helmet());
 require("dotenv").config();
@@ -21,20 +18,20 @@ app.use(BP.urlencoded({extended: true}));
 app.use(logger('dev'));
 
 app.get('/', (req,res) => {
-    res.send('hlo world')
+    res.send('hello world')
 });
 
-app.use('/api', newsRoute);
-app.use(require('./routes/user'));
+//unprotected routes
+app.use(require('./routes/user'));//crud users
+app.use(require('./routes/authRoute'))
 
-// midellware
-app.use(middleware.verifyToken);
-
-app.get('/protek', (req, res) => {
-    // Dapatkan informasi pengguna dari req.user
+//proteted routes
+app.use(middleware.verifyToken);// midellware
+app.get('/protek', (req, res) => {//get user loggin
     const user = req.user;
     res.json({ message: 'Protected route', user, tets: "kamu keren" });
 });
+app.use(require('./routes/newsRoute'));//news route
 
 app.listen(port, ()=>{
     console.log(`server jalan http://localhost:${port}`)
